@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BMI Rechner</title>
+    <style>
+        label,
+        button {
+            display: block;
+            margin: 2em;
+        }
+        input {
+            width: 3.5em;
+        }
+    </style>
+    <script>
+        //<![CDATA[
+        function berechneBMI() {
+            let groesse = parseInt(document.getElementById("groesse").value);
+            let masse = parseInt(document.getElementById("masse").value);
+            // BMI=kg/m^2=(100*100*kg)/cm^2=(100*100*10*kg)/(cm^2*10)=((100000*kg)/(cm^2))/10
+            document.getElementById("bmi").value = Math.round(100000 * masse / (groesse * groesse)) / 10;
+        }
+        //]]>
+    </script>
+</head>
+
+<body>
+<h1>BMI Rechner</h1>
+<main>
+    <form>
+        <label for="groesse">Größe:
+            <input id="groesse" type="number" min="100" max="220" step="1" value="175">cm
+        </label>
+        <label for="masse">Masse:
+            <input id="masse" type="number" min="20" max="250" step="0.1" value="75">kg
+        </label>
+        <label>BMI:
+            <output id="bmi"></output>
+        </label>
+        <button type="button" onclick="berechneBMI()">Berechnen</button>
+    </form>
+</main>
+</body>
+
+</html>
